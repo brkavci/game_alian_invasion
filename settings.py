@@ -6,9 +6,16 @@ class Settings:
         # Screen settings
         self.screen_width = 1920
         self.screen_height = 1080
-        self.screen_mode = 'F'  # 'F' Fullscreen,'W' Window mode
+        self.screen_mode = 'W'  # 'F' Fullscreen,'W' Window mode
         self.bg_color = (158, 220, 233)
 
         # Ship settings
-        self.ship_speed = 10
-        self.ship_type = 'blue_rocket'
+        self.ship_type = 'black_hawk'
+        self.ship_speed = 1.5
+
+        # Bullet settings
+        self.bullet_speed = 1.0
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = (140, 15, 200)
+        self.bullets_allowed = 3
