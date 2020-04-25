@@ -7,6 +7,7 @@ class Settings:
         self.screen_width = 1920
         self.screen_height = 1080
         self.screen_mode = 'W'  # 'F' Fullscreen,'W' Window mode
+        # alienlar icin width vs kullanılıyor fullscreen yapınca onları hesaplanan degere assign et
         self.bg_color = (158, 220, 233)
 
         # Ship settings
@@ -17,5 +18,5 @@ class Settings:
         self.bullet_speed = 1.0
         self.bullet_width = 3
         self.bullet_height = 15
-        self.bullet_color = (140, 15, 200)
-        self.bullets_allowed = 3
+        self.bullet_color = (1, 1, 1)
+        self.bullets_allowed = 7
