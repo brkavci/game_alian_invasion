@@ -7,7 +7,6 @@ class Settings:
         self.screen_width = 1920
         self.screen_height = 1080
         self.screen_mode = 'W'  # 'F' Fullscreen,'W' Window mode
-        # alienlar icin width vs kullanılıyor fullscreen yapınca onları hesaplanan degere assign et
         self.bg_color = (158, 220, 233)
 
         # Ship settings
