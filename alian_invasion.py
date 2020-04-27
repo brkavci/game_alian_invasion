@@ -30,9 +30,10 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+            if self.stats.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -144,20 +145,36 @@ class AlienInvasion:
         self.aliens.update()
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
+        # Look for aliens hitting the bottom of the screen.
+        self._check_aliens_bottom()
 
     def _ship_hit(self):
         """Respond to the ship being hit by an alien."""
-        self.stats.ships_left -= 1
-        self.bullets.empty()
-        self.ship.center_ship()
+        if self.stats.ships_left > 0:
+            self.stats.ships_left -= 1
+            self.bullets.empty()
+            self.ship.center_ship()
+            self._reset_aliens()
 
-        # Reset aliens positions
+            # pause
+            sleep(0.5)
+        else:
+            self.stats.game_active = False
+
+    def _check_aliens_bottom(self):
+        """Check if any aliens have reached the bottom of the screen."""
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens:
+            if alien.rect.bottom >= screen_rect.bottom:
+                # Treat this the same as if the ship got hit.
+                self._ship_hit()
+
+    def _reset_aliens(self):
+        """Reset all remaining aliens positions to starting position"""
         for alien in self.aliens:
             alien.rect.y -= (self.stats.drop_counter *
                              self.settings.fleet_drop_speed)
         self.stats.drop_counter = 0
-        # pause
-        sleep(0.5)
 
     def _screen_mode(self):
         """Responsible for screen mode(Fullscreen/Windowed)"""
