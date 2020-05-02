@@ -85,6 +85,7 @@ class AlienInvasion:
             self.stats.game_active = True
             self.sb.prep_score()
             self.sb.prep_level()
+            self.sb.prep_ships()
 
             # Get rid of any remaining aliens and bullets.
             self.aliens.empty()
@@ -173,7 +174,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
-        alien.rect.y = alien.rect.height * 3 + 2 * alien.rect.height * row_number
+        alien.rect.y = alien.rect.height * 4 + 2 * alien.rect.height * row_number
         # self.initial_y = alien.rect.y
         self.aliens.add(alien)
 
@@ -190,6 +191,7 @@ class AlienInvasion:
         """Respond to the ship being hit by an alien."""
         if self.stats.ships_left > 0:
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
             self.bullets.empty()
             self.ship.center_ship()
             self._reset_aliens()

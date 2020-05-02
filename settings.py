@@ -10,7 +10,7 @@ class Settings:
         self.bg_color = (158, 220, 233)
 
         # Ship settings
-        self.ship_type = 'black_hawk'
+        self.ship_type = 'military'
         self.ship_limit = 2
 
         # Bullet settings
