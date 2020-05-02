@@ -19,7 +19,7 @@ class Settings:
         self.bullets_allowed = 7
 
         # Alien settings
-        self.fleet_drop_speed = 100
+        self.fleet_drop_speed = 15
 
         # How quickly the game speeds up
         self.ship_speedup_scale = 1.3
@@ -35,7 +35,7 @@ class Settings:
         self.bullet_width = 3
 
         # Scoring
-        self.alien_points = 50
+        self.alien_points = 200
 
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
@@ -46,4 +46,4 @@ class Settings:
         self.bullet_speed *= self.ship_speedup_scale
         self.bullet_width *= self.ship_speedup_scale
         self.alien_speed *= self.alien_speedup_scale
-        self.alien_points += 50
+        self.alien_points *= 2
